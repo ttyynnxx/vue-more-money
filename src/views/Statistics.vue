@@ -1,7 +1,6 @@
 <template>
   <div>
-    这是历史记录
-    <Nav></Nav>
+    <Layout><p>这是历史记录Statistics</p></Layout>
   </div>
 </template>
 

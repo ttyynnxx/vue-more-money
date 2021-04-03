@@ -1,13 +1,15 @@
 <template>
   <div>
-    这是标签
-    <Nav></Nav>
+    <Layout>
+        <p>Labels</p>
+    </Layout>
   </div>
 </template>
 
 <script lang="ts">
+
 export default {
-  name: 'Money'
+  name: 'Labels'
 }
 </script>
 

@@ -1,21 +1,29 @@
 <template>
   <div class="nav">
-    <router-link to="/money">记账</router-link> |
-    <router-link to="/labels">标签</router-link> |
-    <router-link to="/statistics">统计</router-link>
-    <hr />
-    <router-view></router-view>
+    <router-link to="/money">
+      <Icon name="标签" />
+      记账</router-link
+    >
+    <router-link to="/labels">
+      <Icon name="竖状图" />
+      标签
+    </router-link>
+    <router-link to="/statistics">
+      <Icon name="淘宝客推广" />
+      统计</router-link
+    >
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({})
+export default {
+  name: 'Nav'
+}
 </script>
 
 <style lang="scss" scoped>
 .nav {
   border: 1px solid red;
+  display: flex;
 }
 </style>
