@@ -1,11 +1,14 @@
 <template>
-  <div>这是历史记录</div>
+  <div>
+    这是历史记录
+    <Nav></Nav>
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({})
+export default {
+  name: 'Statistics'
+}
 </script>
 
 <style scoped>

@@ -1,11 +1,14 @@
 <template>
-  <div>这是money</div>
+  <div>
+    这是money
+    <Nav></Nav>
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({})
+export default {
+  name: 'Labels'
+}
 </script>
 
 <style scoped>
