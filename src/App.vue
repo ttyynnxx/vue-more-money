@@ -5,13 +5,19 @@
 </template>
 
 <style lang="scss">
-@import '~@/assets/styles/reset.css';
-@import '~@/assets/styles/helper.css';
+@import '~@/assets/styles/reset.scss';
+@import '~@/assets/styles/helper.scss';
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
   line-height: 1.5;
+  font-size: 16px;
   font-family: $font-hei;
 }
+// .clearfix::after {
+//   content: '';
+//   display: block;
+//   clear: both;
+// }
 </style>

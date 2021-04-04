@@ -7,6 +7,8 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
+
 let imoprtAll = (requireContext: __WebpackModuleApi.RequireContext) => {
   requireContext.keys().forEach(requireContext)
 }
@@ -15,8 +17,10 @@ try {
 } catch (error) {
   console.log(error)
 }
-
-import Vue from 'vue'
+// import x from '@/assets/icons/标签.svg'
+// import y from '@/assets/icons/淘宝客推广.svg'
+// console.log(x)
+// console.log(y)
 
 export default Vue.extend({
   props: ['name']
