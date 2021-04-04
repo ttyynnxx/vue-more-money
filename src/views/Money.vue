@@ -5,7 +5,7 @@
       <NumberPad />
 
       <!-- 3.支出和收入 -->
-      <Type xxx="hello" />
+      <Type :xxx="333" />
 
       <!-- 2.备注部分 -->
       <Notes />

@@ -11,30 +11,57 @@
   </div>
 </template>
 
-<script lang="js">
+<script lang="ts">
 import Vue from 'vue'
+// 用typescript实现支出与收入的切换效果
+import { Component, Prop } from 'vue-property-decorator'
 
-export default Vue.extend({
-  name:'Type',
-  props:['xxx'],
-  data(){
-    return {
-      type:'-' // -表示支出，+表示收入
+@Component
+export default class Type extends Vue {
+  type = '-' // '-'表示支出，‘+’表示收入
+  @Prop(Number) xxx: number | undefined
+  // Prop 告诉Vue.xxx 不是data 是prop
+  // Number 告诉 Vue xxx 运行时是个 Number
+  // xxx 表示属性名
+  // number | undefined 告诉TS xxx的编译时类型
+
+  selectType(type: string) {
+    if (type !== '-' && type !== '+') {
+      throw new Error('type is unkown')
     }
-  },
-  methods: {
-    selectType(type){
-      if(type!=='-' && type !== '+'){
-        throw new Error('type is unknowm')
-      }
-      this.type =type
-    }
-  },
-  mounted(){
-    console.log(this.xxx);
+    this.type = type
   }
+  mounted() {
+    if (this.xxx === undefined) {
+      console.log('没有xxx')
+    } else {
+      console.log(this.xxx)
+    }
+  }
+}
 
-})
+// 以下代码是用JS实现的支出和收入效果
+// export default Vue.extend({
+//   name:'Type',
+//   props:['xxx'],
+//   data(){
+//     return {
+//       type:'-' // -表示支出，+表示收入
+//     }
+//   },
+//   methods: {
+//     selectType(type){
+//       if(type!=='-' && type !== '+'){
+//         throw new Error('type is unknowm')
+//       }
+//       this.type =type
+//     }
+//   },
+//   mounted(){
+//     console.log(this.xxx);
+//   }
+
+// })
 </script>
 
 <style lang="scss" scoped>
