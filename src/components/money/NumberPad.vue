@@ -1,29 +1,74 @@
 <template>
   <div class="numberPad">
-    <div class="output">100</div>
+    <div class="output">{{ output }}</div>
     <div class="buttons">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>删除</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>清空</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button class="ok">OK</button>
-      <button class="zero">0</button>
-      <button>.</button>
+      <button @click="inputContent">1</button>
+      <button @click="inputContent">2</button>
+      <button @click="inputContent">3</button>
+      <button @click="remove">删除</button>
+      <button @click="inputContent">4</button>
+      <button @click="inputContent">5</button>
+      <button @click="inputContent">6</button>
+      <button @click="clear">清空</button>
+      <button @click="inputContent">7</button>
+      <button @click="inputContent">8</button>
+      <button @click="inputContent">9</button>
+      <button @click="ok" class="ok">OK</button>
+      <button @click="inputContent" class="zero">0</button>
+      <button @click="inputContent">.</button>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import Vue from 'vue'
 
-export default Vue.extend({})
+export default Vue.extend({
+  data() {
+    return {
+      output: '0'
+    }
+  },
+  methods:{
+    // 显示输出内容
+    inputContent(event){
+      console.log(event.target.textContent);
+      const input = event.target.textContent
+      if(this.output.length === 16){return}
+      if(this.output === '0'){
+        if('0123456789'.indexOf(input) >=0){
+          this.output = input
+        }else{
+          this.output += input
+        }
+        return
+      }
+      if(this.output.indexOf('.') >=0 && input == '.'){
+       return
+      }
+        this.output += input
+    },
+    // 从后往前删除单个数字
+    remove(){
+      if(this.output.length === 1){
+        this.output='0'
+      }else{
+        this.output = this.output.slice(0,-1)
+      }
+
+    },
+    // 清空所有内容
+    clear(){
+      this.output='0'
+    },
+
+    // 提交输入的数字进行记账记录
+    ok(){
+      console.log('ok');
+    }
+
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -37,6 +82,7 @@ export default Vue.extend({})
     font-family: Consolas, monospace;
     padding: 9px 16px;
     text-align: right;
+    height: 72px;
   }
   .buttons {
     @extend %clearFix;
