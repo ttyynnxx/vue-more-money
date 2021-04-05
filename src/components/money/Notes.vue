@@ -2,15 +2,31 @@
   <div class="">
     <label for="" class="notes">
       <span class="name">备注</span>
-      <input type="text" placeholder="在这里输入备注" />
+      <input
+        type="text"
+        :value="value"
+        @input="onInput"
+        placeholder="在这里输入备注"
+      />
     </label>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import Vue from 'vue'
 
-export default Vue.extend({})
+export default Vue.extend({
+  data(){
+    return{
+      value:''
+    }
+  },
+  methods:{
+    onInput(event){
+      this.value=event.target.value
+    }
+  }
+})
 </script>
 
 <style lang="scss" scoped>
