@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ record }}
+    {{ recordList }}
     <Layout class-prefix="layout">
       <!-- 键盘 -->
       <NumberPad :value.sync="record.amount" @submit="saveRecord" />
@@ -38,7 +38,7 @@ export default {
     return{
       tags:['衣服','食物','住宿','出行'],
       record:{tags:[],notes:'',type:'-',amount:10},
-      recordList:[]
+      recordList:JSON.parse(window.localStorage.getItem('recordList') || '[]')
     }
   },
   methods:{
@@ -54,7 +54,7 @@ export default {
     onUpdateAmount(value){
       this.record.amount=parseFloat(value)
     },
-    // 点击后存储至本地
+    // 点击后将数据存储至本地
     saveRecord() {
       const record2=JSON.parse(JSON.stringify(this.record))
       this.recordList.push(record2)
@@ -63,7 +63,7 @@ export default {
   },
   watch:{
     recordList(val){
-      window.localStorage.setItem('recordList',JSON.stringify(this.record))
+      window.localStorage.setItem('recordList',JSON.stringify(this.recordList))
     }
   }
 }
