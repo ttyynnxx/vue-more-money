@@ -1,13 +1,9 @@
 <template>
   <div class="">
+    {{ value }}
     <label for="" class="notes">
       <span class="name">备注</span>
-      <input
-        type="text"
-        :value="value"
-        @input="onInput"
-        placeholder="在这里输入备注"
-      />
+      <input type="text" v-model="value" placeholder="在这里输入备注" />
     </label>
   </div>
 </template>
@@ -22,9 +18,7 @@ export default Vue.extend({
     }
   },
   methods:{
-    onInput(event){
-      this.value=event.target.value
-    }
+
   }
 })
 </script>
