@@ -1,10 +1,10 @@
 <template>
   <div class="">
     <ul class="types">
-      <li :class="type === '-' ? 'selected' : ''" @click="selectType('-')">
+      <li :class="value === '-' ? 'selected' : ''" @click="selectType('-')">
         支出
       </li>
-      <li :class="type === '+' && 'selected'" @click="selectType('+')">
+      <li :class="value === '+' && 'selected'" @click="selectType('+')">
         收入
       </li>
     </ul>
@@ -14,30 +14,34 @@
 <script lang="ts">
 import Vue from 'vue'
 // 用typescript实现支出与收入的切换效果
-import { Component, Prop } from 'vue-property-decorator'
+import { Component, Prop, Watch } from 'vue-property-decorator'
 
 @Component
 export default class Type extends Vue {
-  type = '-' // '-'表示支出，‘+’表示收入
-  @Prop(Number) xxx: number | undefined
-  // Prop 告诉Vue.xxx 不是data 是prop
-  // Number 告诉 Vue xxx 运行时是个 Number
-  // xxx 表示属性名
-  // number | undefined 告诉TS xxx的编译时类型
-
+  // type = '-' // '-'表示支出，‘+’表示收入
+  // @Prop(Number) xxx: number | undefined
+  // // Prop 告诉Vue.xxx 不是data 是prop
+  // // Number 告诉 Vue xxx 运行时是个 Number
+  // // xxx 表示属性名
+  // // number | undefined 告诉TS xxx的编译时类型
+  @Prop() readonly value!: string
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('type is unkown')
     }
-    this.type = type
+    this.$emit('update:value', type)
   }
-  mounted() {
-    if (this.xxx === undefined) {
-      console.log('没有xxx')
-    } else {
-      console.log(this.xxx)
-    }
-  }
+  // mounted() {
+  //   if (this.xxx === undefined) {
+  //     console.log('没有xxx')
+  //   } else {
+  //     console.log(this.xxx)
+  //   }
+  // }
+  // @Watch('type')
+  // onTypeChange(value: string) {
+  //   this.$emit('update:value', value)
+  // }
 }
 
 // 以下代码是用JS实现的支出和收入效果

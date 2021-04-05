@@ -1,11 +1,8 @@
 <template>
-  <div class="">
-    {{ value }}
-    <label for="" class="notes">
-      <span class="name">备注</span>
-      <input type="text" v-model="value" placeholder="在这里输入备注" />
-    </label>
-  </div>
+  <label for="" class="notes">
+    <span class="name">备注</span>
+    <input type="text" v-model="value" placeholder="在这里输入备注" />
+  </label>
 </template>
 
 <script lang="js">
@@ -17,7 +14,10 @@ export default Vue.extend({
       value:''
     }
   },
-  methods:{
+  watch:{
+    value:function(val){
+      this.$emit('update:value',val)
+    }
 
   }
 })

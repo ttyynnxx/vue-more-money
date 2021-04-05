@@ -1,21 +1,52 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button>新增标签</button>
+      <button @click="addTag">新增标签</button>
     </div>
     <ul class="current">
-      <li>衣服</li>
-      <li>食物</li>
-      <li>住宿</li>
-      <li>出行</li>
+      <li
+        v-for="tag in dataSource"
+        :key="tag"
+        :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
+        @click="toggle(tag)"
+      >
+        {{ tag }}
+      </li>
     </ul>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import Vue from 'vue'
 
-export default Vue.extend({})
+export default Vue.extend({
+  props: ['dataSource'],
+  data(){
+    return {
+      selectedTags:[]
+    }
+  },
+  methods:{
+    toggle(tag){
+      const index =this.selectedTags.indexOf(tag)
+      if(index >=0){
+        this.selectedTags.splice(index,1)
+      }else{
+        this.selectedTags.push(tag)
+      }
+      this.$emit('update:value',this.selectedTags)
+    },
+    addTag(){
+      const name =window.prompt('请输入标签名')
+      if(name === ''){
+        window.alert('标签不能为空')
+      }else{
+        this.$emit('update:dataSource',[...this.dataSource,name])
+      }
+    }
+  }
+
+})
 </script>
 
 <style lang="scss" scoped>
@@ -29,14 +60,21 @@ export default Vue.extend({})
   flex-direction: column-reverse;
   > .current {
     display: flex;
+    flex-wrap: wrap;
     > li {
-      background-color: #d9d9d9;
+      $bg: #d9d9d9;
+      background-color: $bg;
       $h: 24px;
       height: $h;
       line-height: $h;
       border-radius: $h/2;
       padding: 0 16px;
       margin-right: 12px;
+      margin-top: 10px;
+      &.selected {
+        background-color: darken($bg, 50%);
+        color: #fff;
+      }
     }
   }
   > .new {

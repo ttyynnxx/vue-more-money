@@ -24,9 +24,10 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  props:['value'],
   data() {
     return {
-      output: '0'
+      output: this.value.toString()
     }
   },
   methods:{
@@ -64,7 +65,7 @@ export default Vue.extend({
 
     // 提交输入的数字进行记账记录
     ok(){
-      console.log('ok');
+      this.$emit('update:value',this.output)
     }
 
   }
