@@ -3,7 +3,7 @@
     {{ record }}
     <Layout class-prefix="layout">
       <!-- 键盘 -->
-      <NumberPad :value.sync="record.amount" />
+      <NumberPad :value.sync="record.amount" @submit="saveRecord" />
 
       <!-- 3.支出和收入 -->
       <Type :value.sync="record.type" />
@@ -29,6 +29,7 @@ import NumberPad from '@/components/money/NumberPad.vue'
 import Type from '@/components/money/Type.vue'
 import Notes from '@/components/money/Notes.vue'
 import Tags from '@/components/money/Tags.vue'
+import { Watch } from 'vue-property-decorator';
 
 export default {
   components: { NumberPad, Notes, Tags, Type },
@@ -36,7 +37,8 @@ export default {
   data(){
     return{
       tags:['衣服','食物','住宿','出行'],
-      record:{tags:[],notes:'',type:'-',amount:10}
+      record:{tags:[],notes:'',type:'-',amount:10},
+      recordList:[]
     }
   },
   methods:{
@@ -51,6 +53,17 @@ export default {
     // },
     onUpdateAmount(value){
       this.record.amount=parseFloat(value)
+    },
+    // 点击后存储至本地
+    saveRecord() {
+      const record2=JSON.parse(JSON.stringify(this.record))
+      this.recordList.push(record2)
+      console.log(this.recordList);
+    }
+  },
+  watch:{
+    recordList(val){
+      window.localStorage.setItem('recordList',JSON.stringify(this.record))
     }
   }
 }
