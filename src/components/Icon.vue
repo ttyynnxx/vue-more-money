@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <svg class="icon">
-      <use :xlink:href="'#' + name" />
-    </svg>
-  </div>
+  <svg class="icon">
+    <use :xlink:href="'#' + name" />
+  </svg>
 </template>
 
 <script lang="ts">
@@ -34,5 +32,6 @@ export default Vue.extend({
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+  color: #333;
 }
 </style>

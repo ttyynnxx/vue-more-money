@@ -29,17 +29,18 @@ import NumberPad from '@/components/money/NumberPad.vue'
 import Type from '@/components/money/Type.vue'
 import Notes from '@/components/money/Notes.vue'
 import Tags from '@/components/money/Tags.vue'
-import model from '@/model.js'
-console.log(model);
+import model from '@/model/model.js'
+import tagListModel from '@/model/tagListModel.js'
 
 const recordList=model.fetch()
+const tagList=tagListModel.fetch()
 
 export default {
   components: { NumberPad, Notes, Tags, Type },
   name: 'Money',
   data(){
     return{
-      tags:['衣服','食物','住宿','出行'],
+      tags:tagList,
       record:{tags:[],notes:'',type:'-',amount:10},
       recordList:JSON.parse(window.localStorage.getItem('recordList') || '[]')
     }
