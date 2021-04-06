@@ -38,7 +38,18 @@ const tagListModel = {
     }
   },
   // 删除数据
-  remove(id) {},
+  remove(id) {
+    let index=-1
+    for(let i=0;i<this.data.length;i++){
+      if(this.data[i].id===id){
+        index=i
+        break
+      }
+    }
+    this.data.splice(index,1)
+    this.save()
+    return true
+  },
   // 修改数据
   save() {
     window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.data))
