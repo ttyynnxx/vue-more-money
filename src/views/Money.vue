@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- {{ recordList }} -->
+    {{ record }}
     <Layout class-prefix="layout">
       <!-- 键盘 -->
       <NumberPad :value.sync="record.amount" @submit="saveRecord" />

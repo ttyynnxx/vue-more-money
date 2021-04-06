@@ -1,7 +1,7 @@
 <template>
   <label for="" class="notes">
     <span class="name">{{fieldName}}</span>
-    <input type="text" v-model="value" :placeholder="placeholder" />
+    <input type="text" :value="value" @input="onValueChanged($event.target.value)" :placeholder="placeholder" />
   </label>
 </template>
 
@@ -9,14 +9,14 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  props:['fieldName','placeholder'],
+  props:['fieldName','placeholder','value'],
   data(){
     return{
       value:''
     }
   },
-  watch:{
-    value:function(val){
+  methods:{
+    onValueChanged(val){
       this.$emit('update:value',val)
     }
 
