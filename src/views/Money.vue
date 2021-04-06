@@ -66,15 +66,12 @@ export default {
     },
     // 点击后将数据存储至本地
     saveRecord() {
-      const record2=model.clone(this.record)
-      record2.createdAt=new Date()
-      this.recordList.push(record2)
-      // console.log(this.recordList);
+      model.create(this.record)
     }
   },
   watch:{
     recordList(val){
-      model.save(this.recordList)
+      model.save()
     }
   }
 }

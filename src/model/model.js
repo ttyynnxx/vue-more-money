@@ -1,16 +1,23 @@
+import clone from '@/lib/clone.js'
+
 const localStorageKeyName='recordList'
 
 const model={
-    clone(data){
-        return JSON.parse(JSON.stringify(data))
+    data:[],
+    create(record){
+        const record2=clone(record)
+        record2.createdAt=new Date()
+        this.data.push(record2)
+        // console.log(this.recordList);
     },
     //读取数据
     fetch(){
-        return JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]')
+       this.data= JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]')
+       return this.data
     },
     // 修改数据
-    save(data){
-        window.localStorage.setItem(localStorageKeyName,JSON.stringify(data))
+    save(){
+        window.localStorage.setItem(localStorageKeyName,JSON.stringify(this.data))
     }
 }
 
