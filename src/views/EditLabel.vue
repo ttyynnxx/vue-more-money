@@ -1,12 +1,18 @@
 <template>
   <Layout>
-    编辑标签页面
+    <div class="editTitle">
+        <Icon name="left"/>
+        <span>编辑标签</span>
+    </div>
+    <Notes field-name="标签名" placeholder="请输入标签名"/>
   </Layout>
 </template>
 
 <script>
 import tagListModel from '@/model/tagListModel'
+import Notes from '@/components/money/Notes.vue'
 export default {
+    components:{ Notes},
   created() {
     const id = this.$route.params.id
     tagListModel.fetch()
@@ -21,4 +27,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.editTitle{
+    background: #fff;
+    padding: 4px 20px;
+    span{
+        margin-left: 8px;
+    }
+}
+</style>

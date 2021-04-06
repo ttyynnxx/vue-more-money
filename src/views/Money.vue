@@ -9,7 +9,7 @@
       <Type :value.sync="record.type" />
 
       <!-- 2.备注部分 -->
-      <Notes @update:value="onUpdateNotes" />
+      <Notes fieldName="备注2" placeholder="在这里输入备注" @update:value="onUpdateNotes" />
 
       <!-- 1.输入部分 -->
       <Tags :data-source.sync="tags" @update:value="onUpdateTags" />

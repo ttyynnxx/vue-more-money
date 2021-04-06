@@ -1,7 +1,7 @@
 <template>
   <label for="" class="notes">
-    <span class="name">备注</span>
-    <input type="text" v-model="value" placeholder="在这里输入备注" />
+    <span class="name">{{fieldName}}</span>
+    <input type="text" v-model="value" :placeholder="placeholder" />
   </label>
 </template>
 
@@ -9,6 +9,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  props:['fieldName','placeholder'],
   data(){
     return{
       value:''
