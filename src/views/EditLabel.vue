@@ -37,7 +37,6 @@ export default {
     const tags = tagListModel.data
     const tag = tags.filter(t => t.id === id)[0]
     if (tag) {
-      console.log(tag)
       this.tag = tag
     } else {
       this.$router.replace('/404')
@@ -51,7 +50,11 @@ export default {
     },
     removeTag() {
       if (this.tag) {
-        tagListModel.remove(this.tag.id)
+        if (tagListModel.remove(this.tag.id)) {
+          this.$router.back()
+        } else {
+          window.alert('删除失败')
+        }
       }
     },
     goBack() {

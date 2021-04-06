@@ -1,3 +1,5 @@
+import createId from "../lib/createId.js"
+
 const localStorageKeyName = 'tagList'
 
 const tagListModel = {
@@ -16,7 +18,8 @@ const tagListModel = {
     if (names.indexOf(name) >= 0) {
       return 'duplicated'
     }
-    this.data.push({ id: name, name: name })
+    const id =createId().toString()
+    this.data.push({ id, name: name })
     this.save()
     return 'success' // success表示成功，duplicated表示重复，意味着失败
   },
