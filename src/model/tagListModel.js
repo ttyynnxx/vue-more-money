@@ -20,6 +20,25 @@ const tagListModel = {
     this.save()
     return 'success' // success表示成功，duplicated表示重复，意味着失败
   },
+  //将修改后的数据进行更新
+  update(id, name) {
+    const idList = this.data.map(item => item.id)
+    if (idList.indexOf(id) >= 0) {
+      const names = this.data.map(item => item.name)
+      if (names.indexOf(name) >= 0) {
+        return 'duplicated'
+      } else {
+        const tag = this.data.filter(item => item.id === id)[0]
+        tag.name = name
+        this.save()
+        return 'success'
+      }
+    } else {
+      return 'not found'
+    }
+  },
+  // 删除数据
+  remove(id) {},
   // 修改数据
   save() {
     window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.data))

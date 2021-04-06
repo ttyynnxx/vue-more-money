@@ -10,11 +10,6 @@ import Vue from 'vue'
 
 export default Vue.extend({
   props:['fieldName','placeholder','value'],
-  data(){
-    return{
-      value:''
-    }
-  },
   methods:{
     onValueChanged(val){
       this.$emit('update:value',val)

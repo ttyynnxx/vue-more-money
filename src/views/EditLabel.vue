@@ -6,10 +6,10 @@
         <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-         <Notes :value="tag.name" field-name="标签名" placeholder="请输入标签名"/>
+         <Notes :value="tag.name"  @update:value="updateTag" field-name="标签名" placeholder="请输入标签名"/>
     </div>
     <div class="button-wrapper">
-        <Button>删除标签</Button>
+        <Button @click="removeTag">删除标签</Button>
     </div>
   </Layout>
 </template>
@@ -31,9 +31,20 @@ export default {
     const tags = tagListModel.data
     const tag = tags.filter(t => t.id === id)[0]
     if (tag) {
+        console.log(tag);
       this.tag=tag
     } else {
       this.$router.replace('/404')
+    }
+  },
+  methods:{
+    updateTag(name){
+      if(this.tag){
+          tagListModel.update(this.tag.id,name)
+      }
+    },
+    removeTag(){
+        tagListModel.remove(this.id)
     }
   }
 }
