@@ -1,18 +1,25 @@
 <template>
   <Layout>
-    <div class="editTitle">
-        <Icon name="left"/>
-        <span>编辑标签</span>
+    <div class="navBar">
+        <Icon class="leftIcon" name="left"/>
+        <span class="title">编辑标签</span>
+        <span class="rightIcon"></span>
     </div>
-    <Notes field-name="标签名" placeholder="请输入标签名"/>
+    <div class="form-wrapper">
+         <Notes field-name="标签名" placeholder="请输入标签名"/>
+    </div>
+    <div class="button-wrapper">
+        <Button>删除标签</Button>
+    </div>
   </Layout>
 </template>
 
 <script>
 import tagListModel from '@/model/tagListModel'
 import Notes from '@/components/money/Notes.vue'
+import Button from '@/components/Button.vue'
 export default {
-    components:{ Notes},
+    components:{ Notes, Button},
   created() {
     const id = this.$route.params.id
     tagListModel.fetch()
@@ -28,11 +35,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.editTitle{
+.navBar{
     background: #fff;
-    padding: 4px 20px;
-    span{
-        margin-left: 8px;
+    padding: 12px 16px;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    > .leftIcon{
+        width: 20px;
+        height: 20px;
+    }
+    > .title{
+        color: #333;
+    }
+    > .rightIcon{
+        color: #fff;
+        width: 20px;
+        height: 20px;
     }
 }
+.form-wrapper{
+    background-color: #fff;
+    margin-top: 8px;
+}
+.button-wrapper{
+    text-align: center;
+    margin-top: 44-16px;
+    padding: 16px;
+
+}
+
 </style>

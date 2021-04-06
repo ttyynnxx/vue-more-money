@@ -52,6 +52,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 // 输入内容显示部分
 .tags {
+  background-color: #fff;
   border: 1px red solid;
   flex-grow: 1;
   font-size: 14px;

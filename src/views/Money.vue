@@ -8,8 +8,10 @@
       <!-- 3.支出和收入 -->
       <Type :value.sync="record.type" />
 
-      <!-- 2.备注部分 -->
-      <Notes fieldName="备注2" placeholder="在这里输入备注" @update:value="onUpdateNotes" />
+      <!-- 2.备注部分 这里可以将组件名 Notes 改为 formItem 但没有找到合适的方式一键修改所有的 Notes名，因此暂不改名，等到整个项目做完后再修改-->
+      <div class="note-wrapper">
+        <Notes fieldName="备注2" placeholder="在这里输入备注" @update:value="onUpdateNotes" />
+      </div>
 
       <!-- 1.输入部分 -->
       <Tags :data-source.sync="tags" @update:value="onUpdateTags" />
@@ -74,4 +76,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.note-wrapper{
+  padding: 12px 16px;
+}
+  </style>

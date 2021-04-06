@@ -8,8 +8,8 @@
           <Icon class="svg" name="right" />
         </router-link>
       </div>
-      <div class="addTag-wrapper">
-        <button class="addTag" @click="createTag">新建标签</button>
+      <div class="button-wrapper">
+        <Button @click="createTag">新建标签</Button>
       </div>
     </Layout>
   </div>
@@ -17,12 +17,13 @@
 
 <script lang="js">
 import tagListModel from '@/model/tagListModel.js'
-
+import Button from '@/components/Button.vue'
 tagListModel.fetch()
 // console.log(tags);
 
 export default {
   name: 'Labels',
+  components:{Button},
   data(){
     return{
       tags:tagListModel.fetch()
@@ -64,17 +65,10 @@ export default {
     }
   }
 }
-.addTag {
-  background-color: #767676;
-  color: #fff;
-  border-radius: 4px;
-  border: none;
-  height: 40px;
-  padding: 0 16px;
-  &-wrapper {
-    text-align: center;
-    padding: 14px;
-    margin-top: 44-16px;
-  }
+.button-wrapper{
+  text-align: center;
+  padding: 14px;
+  margin-top: 44-16px;
 }
+
 </style>
