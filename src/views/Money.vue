@@ -39,14 +39,13 @@ import model from '@/model/model.js'
 import tagListModel from '@/model/tagListModel.js'
 
 const recordList=model.fetch()
-const tagList=tagListModel.fetch()
 
 export default {
   components: { NumberPad, Notes, Tags, Type },
   name: 'Money',
   data(){
     return{
-      tags:tagList,
+      tags:window.tagList,
       record:{tags:[],notes:'',type:'-',amount:10},
       recordList:JSON.parse(window.localStorage.getItem('recordList') || '[]')
     }

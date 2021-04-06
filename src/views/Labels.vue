@@ -1,9 +1,13 @@
-
 <template>
   <div>
     <Layout>
       <div class="tags">
-        <router-link  :key="tag.id" class="tag" v-for="tag in tags" :to="`/labels/edit/${tag.id}`">
+        <router-link
+          :key="tag.id"
+          class="tag"
+          v-for="tag in tags"
+          :to="`/labels/edit/${tag.id}`"
+        >
           <span>{{ tag.name }}</span>
           <Icon class="svg" name="right" />
         </router-link>
@@ -26,7 +30,7 @@ export default {
   components:{Button},
   data(){
     return{
-      tags:tagListModel.fetch()
+      tags:window.tagList
     }
   },
   methods:{
@@ -65,10 +69,9 @@ export default {
     }
   }
 }
-.button-wrapper{
+.button-wrapper {
   text-align: center;
   padding: 14px;
   margin-top: 44-16px;
 }
-
 </style>
