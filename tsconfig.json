@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "strict": true,
+    "strict": false, // 这里默认是true，但在main.ts文件引入js文件时会报错js文件类型是any,因此改为false不强制执行
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",

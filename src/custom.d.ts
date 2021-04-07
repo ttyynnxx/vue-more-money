@@ -1,3 +1,5 @@
+declare var tagListModel: any
+
 type Tag = {
   id: string
   name: string
@@ -12,12 +14,14 @@ type TagListModel = {
 }
 
 interface Window {
-    tagList: Tag[]
-    findTag:(id:string)=> Tag | undefined
+  tagList: Tag[]
+  findTag: (id: string) => Tag | undefined
   createTag: (name: string) => void
   removeTag: (id: string) => boolean
   updateTag: (
     id: string,
     name: string
-  ) => 'success' | 'duplicated' | 'not found'
+    ) => 'success' | 'duplicated' | 'not found'
+    recordList: RecordItem[]
+    createRecord:(record:RecordItem)=>void
 }
