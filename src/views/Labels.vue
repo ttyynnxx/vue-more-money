@@ -22,8 +22,7 @@
 <script lang="js">
 import tagListModel from '@/model/tagListModel.js'
 import Button from '@/components/Button.vue'
-tagListModel.fetch()
-// console.log(tags);
+// tagListModel.fetch()
 
 export default {
   name: 'Labels',
@@ -37,13 +36,13 @@ export default {
     createTag(){
       const name =window.prompt('请输入标签')
       if(name){
-        const message = tagListModel.create(name)
-        if(message === 'duplicated'){
-          window.alert('标签名重复了')
-        }else if(message === 'success'){
-          window.alert('添加成功')
-
-        }
+        window.createTag(name)
+        // const message = tagListModel.create(name)
+        // if(message === 'duplicated'){
+        //   window.alert('标签名重复了')
+        // }else if(message === 'success'){
+        //   window.alert('添加成功')
+        // }
       }
     }
   }
