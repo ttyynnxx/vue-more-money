@@ -38,7 +38,7 @@ import Tags from '@/components/money/Tags.vue'
 // import model from '@/model/model.js'
 // import tagListModel from '@/model/tagListModel.js'
 
-const recordList=model.fetch()
+// const recordList=model.fetch()
 
 export default {
   components: { NumberPad, Notes, Tags, Type },
