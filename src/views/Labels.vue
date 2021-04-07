@@ -22,6 +22,7 @@
 <script lang="js">
 // import tagListModel from '@/model/tagListModel.js'
 import Button from '@/components/Button.vue'
+import store from '@/store/index2.ts';
 
 
 export default {
@@ -29,14 +30,14 @@ export default {
   components:{Button},
   data(){
     return{
-      tags:window.tagList
+      tags:store.tagList
     }
   },
   methods:{
     createTag(){
       const name =window.prompt('请输入标签')
       if(name){
-        window.createTag(name)
+        store.createTag(name)
         // const message = tagListModel.create(name)
         // if(message === 'duplicated'){
         //   window.alert('标签名重复了')

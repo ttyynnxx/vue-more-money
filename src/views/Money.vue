@@ -35,8 +35,7 @@ import NumberPad from '@/components/money/NumberPad.vue'
 import Type from '@/components/money/Type.vue'
 import Notes from '@/components/money/Notes.vue'
 import Tags from '@/components/money/Tags.vue'
-// import model from '@/model/model.js'
-// import tagListModel from '@/model/tagListModel.js'
+import store from '@/store/index2.ts';
 
 // const recordList=model.fetch()
 
@@ -45,7 +44,7 @@ export default {
   name: 'Money',
   data(){
     return{
-      tags:window.tagList,
+      tags:store.tagList,
       record:{tags:[],notes:'',type:'-',amount:10},
       recordList:JSON.parse(window.localStorage.getItem('recordList') || '[]')
     }
@@ -65,7 +64,7 @@ export default {
     },
     // 点击后将数据存储至本地
     saveRecord() {
-      window.createRecord(this.record)
+      store.createRecord(this.record)
     }
   },
 }
