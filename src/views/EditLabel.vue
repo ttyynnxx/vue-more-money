@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import tagListModel from '@/model/tagListModel'
+// import tagListModel from '@/model/tagListModel'
 import Notes from '@/components/money/Notes.vue'
 import Button from '@/components/Button.vue'
-import router from '../router/index'
+
 export default {
   components: { Notes, Button },
   data() {
@@ -33,24 +33,20 @@ export default {
   },
   created() {
     const id = this.$route.params.id
-    tagListModel.fetch()
-    const tags = tagListModel.data
-    const tag = tags.filter(t => t.id === id)[0]
-    if (tag) {
-      this.tag = tag
-    } else {
+    this.tag = window.findTag(id)
+    if (!this.tag) {
       this.$router.replace('/404')
     }
   },
   methods: {
     updateTag(name) {
       if (this.tag) {
-        tagListModel.update(this.tag.id, name)
+        window.updateTag(this.tag.id, name)
       }
     },
     removeTag() {
       if (this.tag) {
-        if (tagListModel.remove(this.tag.id)) {
+        if (window.removeTag(this.tag.id)) {
           this.$router.back()
         } else {
           window.alert('删除失败')

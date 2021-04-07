@@ -36,7 +36,7 @@ import Type from '@/components/money/Type.vue'
 import Notes from '@/components/money/Notes.vue'
 import Tags from '@/components/money/Tags.vue'
 import model from '@/model/model.js'
-import tagListModel from '@/model/tagListModel.js'
+// import tagListModel from '@/model/tagListModel.js'
 
 const recordList=model.fetch()
 

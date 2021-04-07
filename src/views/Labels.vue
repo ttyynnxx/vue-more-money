@@ -20,9 +20,9 @@
 </template>
 
 <script lang="js">
-import tagListModel from '@/model/tagListModel.js'
+// import tagListModel from '@/model/tagListModel.js'
 import Button from '@/components/Button.vue'
-// tagListModel.fetch()
+
 
 export default {
   name: 'Labels',
