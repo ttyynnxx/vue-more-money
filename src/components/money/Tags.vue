@@ -5,7 +5,7 @@
     </div>
     <ul class="current">
       <li
-        v-for="tag in dataSource"
+        v-for="tag in tagList"
         :key="tag.id"
         :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
         @click="toggle(tag)"
@@ -18,12 +18,13 @@
 
 <script lang="js">
 import Vue from 'vue'
+import store from '@/store/index2.ts';
 
 export default Vue.extend({
-  props: ['dataSource'],
   data(){
     return {
-      selectedTags:[]
+      selectedTags:[],
+      tagList:store.fetchTags()
     }
   },
   methods:{

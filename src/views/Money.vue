@@ -18,7 +18,7 @@
       </div>
 
       <!-- 1.输入部分 -->
-      <Tags :data-source.sync="tags" @update:value="onUpdateTags" />
+      <Tags />
     </Layout>
   </div>
 </template>
@@ -42,17 +42,22 @@ import store from '@/store/index2.ts';
 export default {
   components: { NumberPad, Notes, Tags, Type },
   name: 'Money',
+  computed:{
+    recordList(){
+      return store.recordList
+    }
+  },
   data(){
     return{
-      tags:store.tagList,
+      // tags:store.tagList,
       record:{tags:[],notes:'',type:'-',amount:10},
-      recordList:JSON.parse(window.localStorage.getItem('recordList') || '[]')
+      // recordList:JSON.parse(window.localStorage.getItem('recordList') || '[]')
     }
   },
   methods:{
-    onUpdateTags(value){
-      this.record.tags=value
-    },
+    // onUpdateTags(value){
+    //   this.record.tags=value
+    // },
     onUpdateNotes(value){
       this.record.notes=value
     },
