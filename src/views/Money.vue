@@ -37,39 +37,34 @@ import Notes from '@/components/money/Notes.vue'
 import Tags from '@/components/money/Tags.vue'
 import store from '@/store/index2.ts';
 
-// const recordList=model.fetch()
 
 export default {
   components: { NumberPad, Notes, Tags, Type },
   name: 'Money',
   computed:{
     recordList(){
-      return store.recordList
+      return this.$store.state.recordList
     }
+  },
+  created(){
+    this.$store.commit('fetchRecords')
   },
   data(){
     return{
       // tags:store.tagList,
-      record:{tags:[],notes:'',type:'-',amount:10},
-      // recordList:JSON.parse(window.localStorage.getItem('recordList') || '[]')
+      record:{tags:[],notes:'',type:'-',amount:0},
     }
   },
   methods:{
-    // onUpdateTags(value){
-    //   this.record.tags=value
-    // },
     onUpdateNotes(value){
       this.record.notes=value
     },
-    // onUpdateType(value){
-    //   this.record.type=value
-    // },
     onUpdateAmount(value){
       this.record.amount=parseFloat(value)
     },
     // 点击后将数据存储至本地
     saveRecord() {
-      store.createRecord(this.record)
+      this.$store.commit('createRecord',(this.record))
     }
   },
 }

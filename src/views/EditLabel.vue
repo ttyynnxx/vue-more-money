@@ -23,7 +23,6 @@
 // import tagListModel from '@/model/tagListModel'
 import Notes from '@/components/money/Notes.vue'
 import Button from '@/components/Button.vue'
-import store from '@/store/index2.ts'
 
 export default {
   components: { Notes, Button },
@@ -33,8 +32,10 @@ export default {
     }
   },
   created() {
-    const id = this.$route.params.id
-    this.tag = store.findTag(id)
+    // const id = this.$route.params.id
+    // this.tag = store.findTag(id)
+    // todo
+    // this.tag = {}
     if (!this.tag) {
       this.$router.replace('/404')
     }
@@ -42,16 +43,18 @@ export default {
   methods: {
     updateTag(name) {
       if (this.tag) {
-        store.updateTag(this.tag.id, name)
+        // todo store.updateTag(this.tag.id, name)
       }
     },
     removeTag() {
       if (this.tag) {
-        if (store.removeTag(this.tag.id)) {
-          this.$router.back()
-        } else {
-          window.alert('删除失败')
-        }
+        // todo
+        return
+        // if (store.removeTag(this.tag.id)) {
+        //   this.$router.back()
+        // } else {
+        //   window.alert('删除失败')
+        // }
       }
     },
     goBack() {
