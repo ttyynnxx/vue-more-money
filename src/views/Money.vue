@@ -35,8 +35,6 @@ import NumberPad from '@/components/money/NumberPad.vue'
 import Type from '@/components/money/Type.vue'
 import Notes from '@/components/money/Notes.vue'
 import Tags from '@/components/money/Tags.vue'
-import store from '@/store/index2.ts';
-
 
 export default {
   components: { NumberPad, Notes, Tags, Type },

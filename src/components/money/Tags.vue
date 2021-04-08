@@ -18,17 +18,20 @@
 
 <script lang="js">
 import Vue from 'vue'
+import store from '../../store/index';
 
 export default Vue.extend({
   computed:{
     tagList(){
-      return []
+      return this.$store.state.tagList
     }
+  },
+  created(){
+    this.$store.commit('fetchTags')
   },
   data(){
     return {
       selectedTags:[],
-      //tagList:store.fetchTags()
     }
   },
   methods:{
@@ -44,7 +47,7 @@ export default Vue.extend({
     addTag(){
       const name =window.prompt('请输入标签名')
       if(!name ){return window.alert('标签不能为空')}
-      //store.createTag(name);
+      this.$store.commit('createTag',name);
     }
   }
 
