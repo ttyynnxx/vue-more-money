@@ -27,6 +27,7 @@ import Button from '@/components/Button.vue'
 export default {
   components: { Notes, Button },
   computed: {
+    // 这里的tag可以改成currentTag，但由于引用地方较多，没有找到合适方法一键修改，暂不改动
     tag() {
       return this.$store.state.currentTag
     }
