@@ -25,24 +25,19 @@ import Button from '@/components/Button.vue'
 export default {
   name: 'Labels',
   components:{Button},
-  data(){
-    return{
-      tags:[]
-      //todo tags:store.tagList
+  beforeCreate(){
+    this.$store.commit('fetchTags')
+  },
+  computed:{
+    tags(){
+      return this.$store.state.tagList
     }
   },
   methods:{
     createTag(){
-      const name =window.prompt('请输入标签')
-      if(name){
-       //todo store.createTag(name)
-        // const message = tagListModel.create(name)
-        // if(message === 'duplicated'){
-        //   window.alert('标签名重复了')
-        // }else if(message === 'success'){
-        //   window.alert('添加成功')
-        // }
-      }
+      const name =window.prompt('请输入标签名')
+      if(!name ){return window.alert('标签不能为空')}
+      this.$store.commit('createTag',name);
     }
   }
 }

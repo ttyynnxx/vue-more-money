@@ -26,16 +26,14 @@ import Button from '@/components/Button.vue'
 
 export default {
   components: { Notes, Button },
-  data() {
-    return {
-      tag: undefined
+  computed: {
+    tag() {
+      return this.$store.state.currentTag
     }
   },
   created() {
-    // const id = this.$route.params.id
-    // this.tag = store.findTag(id)
-    // todo
-    // this.tag = {}
+    const id = this.$route.params.id
+    this.$store.commit('setCurrentTag', id)
     if (!this.tag) {
       this.$router.replace('/404')
     }
