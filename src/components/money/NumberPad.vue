@@ -65,8 +65,9 @@ export default Vue.extend({
 
     // 提交输入的数字进行记账记录
     ok(){
-      this.$emit('update:value',this.output)
-      this.$emit('submit',this.output)
+      const number =parseFloat(this.output)
+      this.$emit('update:value',number)
+      this.$emit('submit',number)
       this.output='0'
     }
 
