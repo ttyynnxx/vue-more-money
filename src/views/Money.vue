@@ -36,7 +36,7 @@ import NumberPad from '@/components/money/NumberPad.vue'
 import Notes from '@/components/money/Notes.vue'
 import Tags from '@/components/money/Tags.vue'
 import Tabs from '@/components/Tabs.vue'
-import recordTypeList from '@/constans/recordTypeList.js';
+import recordTypeList from '@/constants/recordTypeList.js';
 
 export default {
   components: { NumberPad, Notes, Tags,Tabs },

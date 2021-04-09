@@ -13,8 +13,8 @@
 
 <script lang="js">
 import Tabs from '@/components/Tabs.vue'
-import intervalList from '@/constans/intervalList.js'
-import recordTypeList from '@/constans/recordTypeList.js';
+import intervalList from '@/constants/intervalList.js'
+import recordTypeList from '@/constants/recordTypeList.js';
 
 export default {
   components: {  Tabs },
@@ -39,5 +39,8 @@ export default {
        display: none;
      }
    }
+ }
+ ::v-deep .interval-tabs-item{
+   height: 48px;
  }
 </style>
