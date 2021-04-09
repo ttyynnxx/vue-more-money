@@ -20,7 +20,6 @@
 </template>
 
 <script>
-// import tagListModel from '@/model/tagListModel'
 import Notes from '@/components/money/Notes.vue'
 import Button from '@/components/Button.vue'
 

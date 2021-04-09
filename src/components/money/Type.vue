@@ -1,10 +1,10 @@
 <template>
   <div class="">
     <ul class="types">
-      <li :class="value === '-' ? 'selected' : ''" @click="selectType('-')">
+      <li :class="{selected:value==='-',[classPrefix+'-item']:classPrefix}"  @click="selectType('-')">
         支出
       </li>
-      <li :class="value === '+' && 'selected'" @click="selectType('+')">
+      <li :class="{selected:value==='+',[classPrefix+'-item']:classPrefix}" @click="selectType('+')">
         收入
       </li>
     </ul>
@@ -14,7 +14,7 @@
 <script lang="ts">
 import Vue from 'vue'
 // 用typescript实现支出与收入的切换效果
-import { Component, Prop, Watch } from 'vue-property-decorator'
+import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Type extends Vue {
@@ -24,7 +24,9 @@ export default class Type extends Vue {
   // // Number 告诉 Vue xxx 运行时是个 Number
   // // xxx 表示属性名
   // // number | undefined 告诉TS xxx的编译时类型
-  @Prop() readonly value!: string
+  @Prop(String) readonly value!: string
+  @Prop(String) classPrefix?:string
+
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('type is unkown')
