@@ -18,7 +18,6 @@
 
 <script lang="js">
 import Vue from 'vue'
-import store from '../../store/index';
 
 export default Vue.extend({
   computed:{
@@ -49,6 +48,11 @@ export default Vue.extend({
       const name =window.prompt('请输入标签名')
       if(!name ){return window.alert('标签不能为空')}
       this.$store.commit('createTag',name);
+      if(this.$store.state.createTagError){
+       if(this.$store.state.createTagError.message === 'tag name duplicated'){
+          window.alert('标签名重复了')
+        }
+      }
     }
   }
 
