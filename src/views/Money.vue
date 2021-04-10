@@ -14,12 +14,12 @@
         <Notes
           fieldName="备注2"
           placeholder="在这里输入备注"
-          @update:value="onUpdateNotes"
+          :value.sync="record.notes"
         />
       </div>
 
       <!-- 1.输入部分 -->
-      <Tags />
+      <Tags @update:value="record.tags = $event" />
     </Layout>
   </div>
 </template>
@@ -65,7 +65,14 @@ export default {
     },
     // 点击后将数据存储至本地
     saveRecord() {
+      if(!this.record.tags || this.record.tags.length === 0){
+        return window.alert('请至少选择一个标签')
+      }
       this.$store.commit('createRecord',(this.record))
+      if(this.$store.state.createRecordError == null){
+        window.alert('已保存')
+        this.record.notes=''
+      }
     }
   },
 }

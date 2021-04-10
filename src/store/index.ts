@@ -6,15 +6,11 @@ import router from '@/router';
 
 Vue.use(Vuex)
 
-type RootState = {
-  recordList: RecordItem[]
-  tagList: Tag[]
-  currentTag?: Tag
-}
 
 const store = new Vuex.Store({
   state: {
     recordList: [],
+    createRecordError: null,
     tagList: [],
     currentTag: undefined
   } as RootState,
@@ -73,8 +69,15 @@ const store = new Vuex.Store({
       )
     },
     fetchTags(state) {
-      const tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]')
-      return (state.tagList = tagList)
+      state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]')
+      
+      if(!state.tagList || state.tagList.length === 0){
+        store.commit('createTag','衣服')
+        store.commit('createTag','食物')
+        store.commit('createTag','住宿')
+        store.commit('createTag','出行')
+      }
+      
     },
     createTag(state, name: string) {
       const names = state.tagList.map(item => item.name)

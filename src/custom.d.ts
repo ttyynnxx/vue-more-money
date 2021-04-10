@@ -6,6 +6,12 @@ type RecordItem = {
     createdAt?: string // 类 / 构造函数
   }
 
+type RootState = {
+  recordList: RecordItem[]
+  createRecordError:Error | null
+  tagList: Tag[]
+  currentTag?: Tag
+}
 
 type Tag = {
   id: string

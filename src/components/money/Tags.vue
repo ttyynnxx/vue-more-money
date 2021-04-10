@@ -32,6 +32,7 @@ export default Vue.extend({
   data(){
     return {
       selectedTags:[],
+      cur:0
     }
   },
   methods:{
