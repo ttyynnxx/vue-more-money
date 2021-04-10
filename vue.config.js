@@ -2,7 +2,7 @@ const path =require('path')
 
 module.exports ={
     publicPath: process.env.NODE_ENV === 'production'
-    ? '/vue-money-website'
+    ? '/vue-money-website/'
     : '/',
     lintOnSave: false,
     chainWebpack: config =>{
