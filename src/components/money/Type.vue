@@ -73,7 +73,7 @@ export default class Type extends Vue {
 <style lang="scss" scoped>
 // 支出和收入部分
 .types {
-  background-color: #c4c4c4;
+  background-color: #3d7eff;
   display: flex;
   text-align: center;
   font-size: 24px;

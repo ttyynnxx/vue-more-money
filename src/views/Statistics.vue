@@ -7,7 +7,7 @@
         :value.sync="type"
       />
       <ol v-if="groupedList.length > 0">
-        <li v-for="(group, index) in groupedList" :key="index">
+        <li class="group" v-for="(group, index) in groupedList" :key="index">
           <h3 class="title">
             {{ beautify(group.title) }} <span>¥{{ group.total }}</span>
           </h3>
@@ -100,22 +100,7 @@ export default {
   padding: 16px;
   text-align: center;
 }
-::v-deep {
-  .type-tabs-item {
-    background-color: #f5f5f5;
-    color: #c4c4c4;
-    &.selected {
-      background-color: #fff;
-      color: #333;
-      &::after {
-        display: none;
-      }
-    }
-  }
-  .interval-tabs-item {
-    height: 48px;
-  }
-}
+
 %item {
   padding: 0 16px;
   min-height: 40px;
@@ -123,16 +108,20 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.title {
-  @extend %item;
-}
-.record {
-  background-color: #fff;
-  @extend %item;
-}
-.notes {
-  margin-right: auto;
-  padding-left: 16px;
-  color: #999;
+.group {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  .title {
+    @extend %item;
+  }
+  .record {
+    background-color: #fff;
+    margin-top: 2px;
+    @extend %item;
+  }
+  .notes {
+    margin-right: auto;
+    padding-left: 16px;
+    color: #999;
+  }
 }
 </style>

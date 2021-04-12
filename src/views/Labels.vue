@@ -2,6 +2,9 @@
   <div>
     <Layout>
       <div class="tags">
+        <div class="tagsTitle"> 
+          标签管理
+        </div>
         <router-link
           :key="tag.id"
           class="tag"
@@ -52,8 +55,16 @@ export default {
 .tags {
   background-color: #fff;
   font-size: 16px;
-  padding-left: 16px;
+  .tagsTitle{
+    background-color: #3D7EFF;
+    height: 44px;
+    line-height: 44px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+  }
   > .tag {
+      padding-left: 16px;
     min-height: 44px;
     display: flex;
     align-items: center;

@@ -15,7 +15,7 @@
       <button @click="inputContent">9</button>
       <button @click="ok" class="ok">OK</button>
       <button @click="inputContent" class="zero">0</button>
-      <button @click="inputContent">.</button>
+      <button @click="inputContent" style="font-weight:bold">.</button>
     </div>
   </div>
 </template>
@@ -94,43 +94,25 @@ export default Vue.extend({
       width: 25%;
       height: 64px;
       float: left;
-      background: transparent;
-      border: none;
+      background: #fff;
+      border: 2px solid #f5f5f5;
       &.ok {
         height: 64 * 2px;
         float: right;
+        font-size: 24px;
       }
       &.zero {
         width: 25 * 2%;
       }
       $bg: #f2f2f2;
-      &:nth-child(1) {
-        background-color: $bg;
-      }
-      &:nth-child(2),
-      &:nth-child(5) {
-        background-color: darken($bg, 4%);
-      }
-      &:nth-child(3),
-      &:nth-child(6),
-      &:nth-child(9) {
-        background-color: darken($bg, 4 * 2%);
-      }
-      &:nth-child(4),
-      &:nth-child(7),
-      &:nth-child(10) {
-        background-color: darken($bg, 4 * 3%);
-      }
-      &:nth-child(8),
-      &:nth-child(11),
-      &:nth-child(13) {
-        background-color: darken($bg, 4 * 4%);
-      }
-      &:nth-child(14) {
-        background-color: darken($bg, 4 * 5%);
+      &:nth-child(4),&:nth-child(8) {
+        background-color: rgba(249,249,249,1);
       }
       &:nth-child(12) {
-        background-color: darken($bg, 4 * 6%);
+        color: #3D7EFF;
+      }
+      > button:hover {
+        background: rgba(249,249,249,1);
       }
     }
   }

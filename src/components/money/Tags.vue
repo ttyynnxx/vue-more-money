@@ -62,8 +62,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 // 输入内容显示部分
 .tags {
-  background-color: #fff;
-  border: 1px red solid;
+  background-color: #f5f7fa;
   flex-grow: 1;
   font-size: 14px;
   padding: 16px;
@@ -73,7 +72,8 @@ export default Vue.extend({
     display: flex;
     flex-wrap: wrap;
     > li {
-      $bg: #d9d9d9;
+      $bg: #D7E5FF;
+      color: #3D7EFF;
       background-color: $bg;
       $h: 24px;
       height: $h;
@@ -91,11 +91,11 @@ export default Vue.extend({
   > .new {
     padding-top: 16px;
     button {
-      background: transparent;
-      border: none;
-      color: #999;
-      border-bottom: 1px solid;
-      padding: 0 4px;
+      background-color: rgba(255,255,255,1);
+      border: 1px solid #3D7EFF;
+      color: #3D7EFF;
+      border-radius: 15px;
+      padding: 4px 10px;
     }
   }
 }

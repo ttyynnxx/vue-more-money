@@ -37,10 +37,12 @@ export default {
 
 <style lang="scss" scoped>
 .tabs {
-  background-color: #c4c4c4;
+  background-color: #3d7eff;;
   display: flex;
   text-align: center;
   font-size: 24px;
+  color: rgba(255,255,255,0.5);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
   &-item {
     width: 50%;
     height: 64px;
@@ -48,6 +50,9 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
+    &.selected{
+        color: #fff;
+    }
     &.selected::after {
       content: '';
       position: absolute;
@@ -55,7 +60,7 @@ export default {
       left: 0;
       width: 100%;
       height: 4px;
-      background: #333;
+      background: #fff;
     }
   }
 }

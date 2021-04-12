@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 .navBar {
-  background: #fff;
+  background: #3D7EFF;
   padding: 12px 16px;
   font-size: 16px;
   text-align: center;
@@ -69,9 +69,10 @@ export default {
   > .leftIcon {
     width: 20px;
     height: 20px;
+    color: #fff;
   }
   > .title {
-    color: #333;
+    color: #fff;
   }
   > .rightIcon {
     color: #fff;

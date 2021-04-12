@@ -26,6 +26,7 @@ export default Vue.extend({
   padding: 0 16px;
   display: flex;
   align-items: center;
+  background-color: #fff;
   .name {
     padding-right: 16px;
   }
